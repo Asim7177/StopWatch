@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StopWatch</title>
+
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            padding-top: 100px;
+            display: flex;
+            justify-content: center;
+            font-family: sans-serif;
+            background-image: linear-gradient(to right, #eea2a2 0%, #bbc1bf 19%, #57c6e1 42%, #b49fda 79%, #7ac5d8 100%);
+            background-size: 300%;
+            animation: bg 20s ease-in-out infinite alternate;
+        }
+
+        @keyframes bg {
+            0% {
+                background-position: top left;
+            }
+
+            100% {
+                background-position: right;
+            }
+        }
+
+        .container {
+            border: 1px solid black;
+            border-radius: 5px;
+            padding: 15px;
+            background: rgb(93, 85, 85);
+            max-width: 590px;
+        }
+
+        .stopwatch {
+            font-size: 100px;
+            font-weight: bold;
+            margin: 0;
+            text-align: center;
+            color: whitesmoke;
+            padding: 10px;
+            border: 1px solid grey;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            box-shadow: 1px 4px 5px rgba(0, 0, 0, 0.1) inset, 1px -4px 5px rgba(0, 0, 0, 0.1) inset, 1px 4px 5px rgba(0, 0, 0, 0.1) inset, -1px -4px 5px rgba(0, 0, 0, 0.15) inset, 1px 4px 5px rgba(0, 0, 0, 0.25) inset, -1px -4px 5px rgba(0, 0, 0, 0.25) inset;
+        }
+
+        .btn {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        .btn-txt {
+            font-size: 20px;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 0px 5px;
+
+        }
+
+
+        .lap {
+            font-size: 30px;
+            padding: 10px;
+            margin: 10px 0px;
+            background-color: rgb(208, 200, 200);
+            list-style: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        ul {
+            text-align: center;
+            margin: auto;
+            padding: 0;
+        }
+
+        #startBtn {
+            color: darkgreen;
+        }
+
+        #stopBtn {
+            color: red;
+        }
+
+        #resetBtn {
+            color: blue;
+        }
+
+        button {
+            position: relative;
+            border: none;
+            padding: 0;
+        }
+
+        span {
+            position: relative;
+            padding: 20px 40px;
+            display: block;
+        }
+
+        button::after,
+        button::before,
+        span::after,
+        span::before {
+            content: '';
+            position: absolute;
+            background: currentColor;
+            transition: transform 250ms ease-in;
+        }
+
+        button::after {
+            left: 0;
+            bottom: 0;
+            transform-origin: left;
+            width: 100%;
+            height: 5px;
+            transform: scaleX(0);
+
+        }
+
+        button::before {
+            right: 0;
+            top: 0;
+            transform-origin: right;
+            width: 100%;
+            height: 5px;
+            transform: scaleX(0);
+
+        }
+
+        span::before {
+            top: 0;
+            left: 0;
+            transform-origin: top;
+            width: 5px;
+            height: 100%;
+            transform: scaleY(0);
+
+        }
+
+        span::after {
+            top: 0;
+            right: 0;
+            transform-origin: bottom;
+            width: 5px;
+            height: 100%;
+            transform: scaleY(0);
+
+        }
+
+        button:hover::after,
+        button:hover::before {
+            transform: scaleX(1);
+        }
+
+        button:hover span::after,
+        button:hover span::before {
+            transform: scaleY(1);
+        }
+
+        button:hover span::after {
+            transform-origin: top;
+        }
+
+        button:hover span::before {
+            transform-origin: bottom;
+        }
+
+        button:hover::after {
+            transform-origin: right;
+        }
+
+        button:hover::before {
+            transform-origin: left;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <p class="stopwatch" id="stopwatch">00:00:00</p>
+        <button class="btn-start btn-txt" id="startBtn"><span>Start</span></button>
+        <button class="btn-stop btn-txt" id="stopBtn"><span>Stop</span></button>
+        <button class="btn-reset btn-txt" id="resetBtn"><span>Reset</span></button>
+        <button class="btn-lap btn-txt" id="lapBtn"><span>Lap</span></button>
+
+        <ul id="laps">
+        </ul>
+    </div>
+
+
+
+    <script src="index.js"></script>
+</body>
+
+</html>
