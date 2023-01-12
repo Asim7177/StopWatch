@@ -122,7 +122,7 @@ stopBtn.addEventListener('click', stop, false);
 resetBtn.addEventListener('click', reset, false);
 lapBtn.addEventListener('click', lap);
 function lap() {
-  if(time ==1){
+  if(time >= 1){
     let li = document.createElement("li");
   li.setAttribute("class", "lap")
   li.innerHTML = ((min < 10 ? "0" + min : min) + ":" + (sec < 10 ? "0" + sec : sec) + ":" + (ms < 10 ? "0" + ms : ms));
